@@ -66,7 +66,7 @@
 
 ## 构建
 
-要求 Java 21。项目锁定 Gradle 8.14.3、ModDevGradle 2.0.144、NeoForge 21.1.248，依赖锁定在 gradle.lockfile。
+要求 Java 21。项目锁定 Gradle 8.14.3、ModDevGradle 2.0.144、NeoForge 21.1.248，Windows 构建使用 gradle.lockfile，Linux 使用 gradle/locks/linux.lockfile，以保留各系统原生依赖的锁定。
 
     .\gradlew.bat build --offline --no-daemon
 

@@ -4,7 +4,13 @@ version = '1.0.0'
 base { archivesName = 'scex-tag-exporter-1.21.1' }
 java { toolchain.languageVersion = JavaLanguageVersion.of(21); withSourcesJar() }
 neoForge { version = '21.1.248'; mods { scex_tag_exporter { sourceSet sourceSets.main } } }
-dependencyLocking { lockAllConfigurations() }
+dependencyLocking {
+    lockAllConfigurations()
+    // Minecraft selects native runtime modules per operating system.
+    if (System.getProperty('os.name').toLowerCase(Locale.ROOT).contains('linux')) {
+        lockFile = file('gradle/locks/linux.lockfile')
+    }
+}
 tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
 tasks.withType(AbstractArchiveTask).configureEach { preserveFileTimestamps = false; reproducibleFileOrder = true }
 tasks.named('processResources') {
