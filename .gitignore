@@ -1,0 +1,8 @@
+.gradle/
+build/
+run/
+delivery/
+validation/
+*.log
+*.zip
+*.tmp
